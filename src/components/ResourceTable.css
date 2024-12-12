@@ -1,0 +1,122 @@
+/* ResourceTable.css */
+
+/* Style the table container */
+.table-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #000428, #004e92); /* Deep space background */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border for space effect */
+  }
+  
+  /* Style the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    color: #e6e6e6; /* Light text color for contrast */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Glowing text effect */
+  }
+  
+  /* Table headers */
+  th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+  }
+  
+  /* Style for headers */
+  th {
+    background-color: #1d1f22; /* Dark theme */
+    color: #ffcc00; /* Golden color like the Star Wars logo */
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #ffcc00; /* Glowing effect for headers */
+  }
+  
+  /* Style for table cells */
+  td {
+    background-color: #282c34; /* Darker background for rows */
+    font-size: 14px;
+    color: #c8c8c8; /* Slightly lighter text */
+    border-left: 1px solid rgba(255, 255, 255, 0.1); /* Divider between cells */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Hover effect for rows */
+  td:hover {
+    background-color: #444851; /* Darker row on hover */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Subtle glow effect */
+  }
+  
+  /* Row hover effect */
+  tr:hover {
+    background-color: #333; /* Dark gray on row hover */
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Outer glow on hover */
+  }
+  
+  /* Active row effect */
+  tr:active {
+    background-color: #555; /* Slightly brighter active row */
+  }
+  
+  /* Add spacing and rounded corners to the table */
+  table {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  /* Rounded corners for table headers */
+  th {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  /* Adding a glowing effect to the table container */
+  .table-container {
+    animation: glow 1.5s infinite alternate; /* Glow effect */
+  }
+  
+  /* Keyframes for glowing effect */
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  /* Optional: Add a starry background to the table container */
+  .table-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://cdn.pixabay.com/photo/2018/07/05/17/57/space-3519172_960_720.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1; /* Place the stars behind the table */
+  }
+
+  /* Style the loader container */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Custom loader color */
+  .mantine-Loader-root {
+    color: #4CAF50; /* Green color */
+  }
+  
+  

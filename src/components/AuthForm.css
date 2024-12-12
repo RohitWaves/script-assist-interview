@@ -1,0 +1,95 @@
+/* AuthForm.css */
+
+/* Style for the form container */
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1b1b1b; /* Dark background color for a space-like feel */
+    padding: 20px;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font for Star Wars theme */
+  }
+  
+  /* Form box styling */
+  .auth-form-box {
+    background-color: #333; /* Dark gray box for contrast */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2); /* Soft glowing shadow */
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #4CAF50; /* Green border for a sci-fi effect */
+  }
+  
+  /* Style the input fields */
+  input {
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #555; /* Darker border */
+    background-color: #222; /* Dark background for inputs */
+    color: #f0f0f0; /* Light text color */
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border 0.3s ease, background-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    background-color: #333; /* Slightly lighter background on focus */
+    outline: none;
+  }
+  
+  /* Style the button */
+  button {
+    padding: 12px;
+    background-color: #4CAF50; /* Green color for buttons */
+    color: white;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+    box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50; /* Glowing effect on hover */
+  }
+  
+  /* Label styling */
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #f0f0f0; /* Light text for labels */
+  }
+  
+  /* Style error messages (displaying in red) */
+  .mantine-TextInput-error {
+    color: red; /* Red color for error messages */
+  }
+  
+  .mantine-TextInput-root .mantine-TextInput-input:invalid {
+    border-color: red; /* Red border for invalid inputs */
+  }
+  
+  /* Optional: Add some margin to form items */
+  .auth-form-box .mantine-TextInput-root {
+    margin-bottom: 20px;
+  }
+  
+  /* Glowing effect for the form box */
+  .auth-form-box:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3); /* Increased glow on hover */
+  }
+  
+  /* Additional futuristic accent */
+  button:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 30px #4CAF50, 0 0 40px #4CAF50;
+  }
+  

@@ -1,0 +1,35 @@
+/* Style the navbar container */
+.navbar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between the title and button */
+    align-items: center; /* Align items vertically */
+    padding: 10px 20px; /* Add some padding */
+    background-color: #000; /* Black background to match the Star Wars theme */
+    color: white; /* White text */
+    font-family: 'Arial', sans-serif; /* Font for the title */
+  }
+  
+  /* Title styling */
+  .navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Logout button styling */
+  .logout-button {
+    background-color: #ffcc00; /* Yellow color for the button */
+    color: black; /* Text color for the button */
+    border: none;
+    padding: 8px 16px; /* Padding inside the button */
+    font-size: 12px;
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+  }
+  
+  /* Logout button hover effect */
+  .logout-button:hover {
+    background-color: #e6b800; /* Darker yellow on hover */
+  }
+  
