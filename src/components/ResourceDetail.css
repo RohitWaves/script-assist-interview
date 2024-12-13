@@ -1,50 +1,46 @@
-/* StarWars.css */
-
 /* Universal dark theme */
 body {
-    background-color: #000000;
-    color: #f0f0f0;
-    font-family: 'Star Jedi', sans-serif; /* Assuming a "Star Wars"-like font */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Box styles */
-  .box {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #ffcc00;
-    margin: 20px;
-    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
-  }
-  
-  /* Text styles */
-  .text {
-    color: #ffcc00;
-    font-size: 18px;
-    line-height: 1.5;
-    margin: 10px 0;
-    font-weight: bold;
-  }
-  
-  /* Specific section styles */
-  .text-name {
-    font-size: 24px;
-    text-transform: uppercase;
-  }
-  
-  .text-detail {
-    font-size: 20px;
-    font-style: italic;
-  }
-  
-  /* Adding a "starry" background */
-  .star-background {
-    background: url('https://www.w3schools.com/w3images/space.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-  }
-  
-  
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: 'Star Jedi', sans-serif; /* Assuming a "Star Wars"-like font */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Box styles */
+.box {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ffcc00;
+  margin: 20px;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+/* Text styles */
+.text {
+  color: #ffcc00;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Specific section styles */
+.text-name {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.text-detail {
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* Adding a "starry" background */
+.star-background {
+  background: url('https://www.w3schools.com/w3images/space.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}

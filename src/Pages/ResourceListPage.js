@@ -36,7 +36,7 @@ const ResourceListPage = () => {
       />
       {
         filteredData.length === 0 ? (
-             <h4 style={{textAlign:"center"}}>No Data Found</h4>
+             <h4 style={{textAlign:"center",color:"black"}}>No Data Found</h4>
         ) : (
             <ResourceTable data={filteredData} />
         )
