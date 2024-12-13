@@ -29,20 +29,36 @@ const ResourceDetail = () => {
     const getPerson = async () => {
       const data = await fetchPersonDetails(id);
       setPerson(data);
-      const filmData = await fetchDetails(data.films);
-      setEnrichedData(filmData);
-      const speciesData = await fetchDetails(data.species);
-      setSpeciesData(speciesData);
-      const vehiclesData = await fetchDetails(data.vehicles);
-      setVehiclesData(vehiclesData);
-      const starshipsData = await fetchDetails(data.starships);
-      setStarshipsData(starshipsData);
+      
+      // Fetch related data concurrently
+      const filmData = fetchDetails(data.films);
+      const speciesData = fetchDetails(data.species);
+      const vehiclesData = fetchDetails(data.vehicles);
+      const starshipsData = fetchDetails(data.starships);
+
+      // Wait for all the promises to resolve
+      const [films, species, vehicles, starships] = await Promise.all([filmData, speciesData, vehiclesData, starshipsData]);
+
+      setEnrichedData(films);
+      setSpeciesData(species);
+      setVehiclesData(vehicles);
+      setStarshipsData(starships);
       setLoading(false);
     };
     getPerson();
   }, [id]);
 
-  if (loading) return <Loader />;
+  if (loading) {
+    // Display the loader while data is being fetched
+    return (
+      <div className="star-background">
+        <Card className="box">
+          <Loader />
+          <Text className="text">Loading...</Text>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="star-background">
@@ -53,32 +69,48 @@ const ResourceDetail = () => {
         <Text className="text text-detail">Gender: {person.gender}</Text>
 
         <Text className="text">Films:</Text>
-        <ul>
-          {enrichedData.map((film) => (
-            <li key={film.title} className="text">{film.title}</li>
-          ))}
-        </ul>
+        {enrichedData ? (
+          <ul>
+            {enrichedData.map((film) => (
+              <li key={film.title} className="text">{film.title}</li>
+            ))}
+          </ul>
+        ) : (
+          <Loader />
+        )}
 
         <Text className="text">Species:</Text>
-        <ul>
-          {speciesData.map((species) => (
-            <li key={species.name} className="text">{species.name}</li>
-          ))}
-        </ul>
+        {speciesData ? (
+          <ul>
+            {speciesData.map((species) => (
+              <li key={species.name} className="text">{species.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <Loader />
+        )}
 
         <Text className="text">Vehicles:</Text>
-        <ul>
-          {vehiclesData.map((vehicle) => (
-            <li key={vehicle.name} className="text">{vehicle.name}</li>
-          ))}
-        </ul>
+        {vehiclesData ? (
+          <ul>
+            {vehiclesData.map((vehicle) => (
+              <li key={vehicle.name} className="text">{vehicle.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <Loader />
+        )}
 
         <Text className="text">Starships:</Text>
-        <ul>
-          {starshipsData.map((starship) => (
-            <li key={starship.name} className="text">{starship.name}</li>
-          ))}
-        </ul>
+        {starshipsData ? (
+          <ul>
+            {starshipsData.map((starship) => (
+              <li key={starship.name} className="text">{starship.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <Loader />
+        )}
       </Card>
     </div>
   );
