@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import './ResourceTable.css'; // Import the CSS file
 
 const ResourceTable = ({ data }) => {
-  
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -21,34 +20,34 @@ const ResourceTable = ({ data }) => {
   if (loading) {
     return (
       <div className="loader-container">
-        <Loader size="xl" color="green" /> {/* Change loader color to green */}
+        <Loader size="xl" color="green" />
       </div>
-    );  // Show the loader while data is being fetched
+    );
   }
 
   return (
-    <div className="table-container"> {/* Add the container class */}
+    <div className="table-container">
       <Table>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Height</th>
-            <th>Mass</th>
+            <th>Email</th>
+            <th>Phone</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.name} onClick={() => handleRowClick(item.url.split('/')[5])}>
+            <tr key={item.id} onClick={() => handleRowClick(item.id)}>
               <td>{item.name}</td>
-              <td>{item.height}</td>
-              <td>{item.mass}</td>
+              <td>{item.email}</td>
+              <td>{item.phone}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
             <td colSpan="3" className="table-footer">
-              <p>Displaying data fetched from SWAPI (Star Wars API)</p>
+              <p>Displaying data fetched from JSONPlaceholder</p>
             </td>
           </tr>
         </tfoot>

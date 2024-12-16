@@ -4,52 +4,37 @@ import { Card, Text, Loader } from '@mantine/core';
 import axios from 'axios';
 import './ResourceDetail.css';  // Import the CSS for styling
 
-// Function to fetch person details
-const fetchPersonDetails = async (id) => {
-  const { data } = await axios.get(`https://swapi.dev/api/people/${id}/`);
+// Function to fetch user details
+const fetchUserDetails = async (id) => {
+  const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
   return data;
 };
 
-// Function to fetch additional details (species, vehicles, starships)
-const fetchDetails = async (urls) => {
-  return await Promise.all(urls.map((url) => axios.get(url).then((response) => response.data)));
+// Function to fetch related data (posts)
+const fetchUserPosts = async (userId) => {
+  const { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+  return data;
 };
 
 const ResourceDetail = () => {
   const { id } = useParams();
-  const [person, setPerson] = useState(null);
-  const [speciesData, setSpeciesData] = useState(null);
-  const [vehiclesData, setVehiclesData] = useState(null);
-  const [starshipsData, setStarshipsData] = useState(null);
-  const [enrichedData, setEnrichedData] = useState(null);  // For films
+  const [user, setUser] = useState(null);
+  const [userPosts, setUserPosts] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch the person details and additional data on mount
   useEffect(() => {
-    const getPerson = async () => {
-      const data = await fetchPersonDetails(id);
-      setPerson(data);
-      
-      // Fetch related data concurrently
-      const filmData = fetchDetails(data.films);
-      const speciesData = fetchDetails(data.species);
-      const vehiclesData = fetchDetails(data.vehicles);
-      const starshipsData = fetchDetails(data.starships);
-
-      // Wait for all the promises to resolve
-      const [films, species, vehicles, starships] = await Promise.all([filmData, speciesData, vehiclesData, starshipsData]);
-
-      setEnrichedData(films);
-      setSpeciesData(species);
-      setVehiclesData(vehicles);
-      setStarshipsData(starships);
+    const getUser = async () => {
+      const userData = await fetchUserDetails(id);
+      setUser(userData);
+      const postsData = await fetchUserPosts(id);
+      setUserPosts(postsData);
       setLoading(false);
     };
-    getPerson();
+
+    getUser();
   }, [id]);
 
   if (loading) {
-    // Display the loader while data is being fetched
     return (
       <div className="star-background">
         <Card className="box">
@@ -63,49 +48,16 @@ const ResourceDetail = () => {
   return (
     <div className="star-background">
       <Card className="box">
-        <Text className="text text-name">Name: {person.name}</Text>
-        <Text className="text text-detail">Height: {person.height}</Text>
-        <Text className="text text-detail">Mass: {person.mass}</Text>
-        <Text className="text text-detail">Gender: {person.gender}</Text>
+        <Text className="text text-name">Name: {user.name}</Text>
+        <Text className="text text-detail">Email: {user.email}</Text>
+        <Text className="text text-detail">Phone: {user.phone}</Text>
+        <Text className="text text-detail">Website: {user.website}</Text>
 
-        <Text className="text">Films:</Text>
-        {enrichedData ? (
+        <Text className="text">Posts:</Text>
+        {userPosts ? (
           <ul>
-            {enrichedData.map((film) => (
-              <li key={film.title} className="text">{film.title}</li>
-            ))}
-          </ul>
-        ) : (
-          <Loader />
-        )}
-
-        <Text className="text">Species:</Text>
-        {speciesData ? (
-          <ul>
-            {speciesData.map((species) => (
-              <li key={species.name} className="text">{species.name}</li>
-            ))}
-          </ul>
-        ) : (
-          <Loader />
-        )}
-
-        <Text className="text">Vehicles:</Text>
-        {vehiclesData ? (
-          <ul>
-            {vehiclesData.map((vehicle) => (
-              <li key={vehicle.name} className="text">{vehicle.name}</li>
-            ))}
-          </ul>
-        ) : (
-          <Loader />
-        )}
-
-        <Text className="text">Starships:</Text>
-        {starshipsData ? (
-          <ul>
-            {starshipsData.map((starship) => (
-              <li key={starship.name} className="text">{starship.name}</li>
+            {userPosts.map((post) => (
+              <li key={post.id} className="text">{post.title}</li>
             ))}
           </ul>
         ) : (

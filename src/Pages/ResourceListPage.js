@@ -3,19 +3,20 @@ import { useQuery } from 'react-query';
 import { Loader, TextInput, Box } from '@mantine/core';
 import ResourceTable from '../components/ResourceTable';
 
-const fetchPeople = async () => {
-  const res = await fetch('https://swapi.dev/api/people/'); // using the fetch web api
+// Function to fetch users from JSONPlaceholder
+const fetchUsers = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
   return res.json();
 };
 
 const ResourceListPage = () => {
-  const { data, isLoading, error } = useQuery('people', fetchPeople);
+  const { data, isLoading, error } = useQuery('users', fetchUsers);
   const [searchQuery, setSearchQuery] = useState('');
 
   // Filter data based on search query
   const filteredData = data
-    ? data.results.filter((person) =>
-        person.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ? data.filter((user) =>
+        user.name.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
@@ -34,15 +35,11 @@ const ResourceListPage = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      {
-        filteredData.length === 0 ? (
-             <h4 style={{textAlign:"center",color:"black"}}>No Data Found</h4>
-        ) : (
-            <ResourceTable data={filteredData} />
-        )
-      }
-     
-
+      {filteredData.length === 0 ? (
+        <h4 style={{ textAlign: 'center', color: 'black' }}>No Data Found</h4>
+      ) : (
+        <ResourceTable data={filteredData} />
+      )}
     </Box>
   );
 };

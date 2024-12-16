@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import ResourceDetail from '../components/ResourceDetail';
 import { Loader } from '@mantine/core';
 
-const fetchResource = async (id) => {
-  const res = await fetch(`https://swapi.dev/api/people/${id}/`);
+// Function to fetch user details by ID
+const fetchUserDetails = async (id) => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
   return res.json();
 };
 
@@ -14,7 +15,7 @@ const ResourceDetailPage = () => {
 
   useEffect(() => {
     const getResource = async () => {
-      const data = await fetchResource(id);
+      const data = await fetchUserDetails(id);
       setResource(data);
     };
     getResource();
