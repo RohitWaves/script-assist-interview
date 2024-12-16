@@ -45,6 +45,13 @@ const ResourceTable = ({ data }) => {
             </tr>
           ))}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan="3" className="table-footer">
+              <p>Displaying data fetched from SWAPI (Star Wars API)</p>
+            </td>
+          </tr>
+        </tfoot>
       </Table>
     </div>
   );
